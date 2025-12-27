@@ -1,0 +1,88 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  background-color: rgb(236, 236, 236);
+}
+header{
+  background-color: white;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+}
+.navbar{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  margin: 0 auto;
+  gap: 20px;
+}
+.logo{
+  font-size: 24px;
+  color: #333;
+}
+.nav-links{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.nav-links a{
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+.product{
+  padding: 8px 16px;
+  background-color: red;
+  border-radius: 5px;
+  color: white !important;
+}
+.cart-link{
+  background-color: #007bff;
+  color: white !important;
+  padding: 8px 16px;
+  border-radius: 5px;
+}
+main{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.filters-container{
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+.search-box{
+  margin-bottom: 20px;
+}
+#search-input{
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  font-size: 15px;
+}
+.filter-buttons{
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.filter-btn{
+  padding: 10px 20px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  background-color: white;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.filter-btn:hover{
+  border-color: #007bff;
+}
+.products-container{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
