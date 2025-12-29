@@ -108,12 +108,17 @@ main{
   margin-bottom: 5px;
   columns: #333;
 }
+.product-description{
+  margin-bottom: 20px;
+  color: gray;
+}
 .product-price{
   font-size: 20px;
   color: #666;
   margin-bottom: 15px;
 }
 .add-to-cart-btn{
+  margin-top: 20px;
   width: 100%;
   padding: 12px;
   background: #28a745;
