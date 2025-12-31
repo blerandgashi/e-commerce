@@ -21,4 +21,40 @@ function showProductContainer(productsArr){
 
   productContainer.innerHTML = html;
 }
-showProductContainer(products)
+showProductContainer(products);
+productContainer.addEventListener("click", function(e){
+  if (e.target.classList.contains("add-to-cart-btn")) {
+    const productId = parseInt(e.target.dataset.id);
+    
+    const product = products.find(product => product.id === productId);
+    
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    const productExists = cart.find(item => item.id === productId)
+
+    if (productExists) {
+      productExists.quantity += 1;
+    }else{
+      cart.push({
+        id:product.id,
+        name: product.name,
+        price: product.price,
+        image: product.image,
+        quantity: 1
+      })
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    getCartCount()
+  }
+})
+
+function getCartCount(){
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  let totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+  console.log(totalItems);
+  
+  cartCount.textContent = totalItems;
+}
+getCartCount()
