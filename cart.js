@@ -25,7 +25,7 @@ function addCartItems(){
           <div class="quantity-controls">
             <button class="quantity-btn decrease-btn" data-id="${product.id}">-</button>
             <span class="quantity">${product.quantity}</span>
-            <button class="quantity-btn increase-btn">+</button>
+            <button class="quantity-btn increase-btn" data-id="${product.id}">+</button>
           </div>
         </div>
       </div>
@@ -33,3 +33,10 @@ function addCartItems(){
   })
 }
 addCartItems()
+
+cartItems.addEventListener("click", function(e){
+  console.log(e.target.dataset.id);
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  
+  
+})
