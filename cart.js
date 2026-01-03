@@ -35,8 +35,41 @@ function addCartItems(){
 addCartItems()
 
 cartItems.addEventListener("click", function(e){
-  console.log(e.target.dataset.id);
-  let cart = JSON.parse(localStorage.getItem('cart')) || [];
-  
+  const productId = parseInt(e.target.dataset.id);
+
+  if (e.target.classList.contains('increase-btn')) {
+    updateQuantity(productId, 1)
+  }else if (e.target.classList.contains('decrease-btn')) {
+    updateQuantity(productId, -1);
+  }else if (e.target.classList.contains("remove-btn")) {
+    removeFromChart(productId);
+  }
   
 })
+
+function updateQuantity(productId, change){
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  const item = cart.find(item => item.id === productId);
+
+  if (item) {
+    item.quantity += change;
+
+    if(item.quantity < 0){
+      cart = cart.filter(item => item.id !== productId);
+    }
+    localStorage.setItem("cart", JSON.stringify(cart));
+  } 
+}
+
+function removeFromChart(productId){
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  cart = cart.filter(item => item.id !== productId);
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+function loadCart(){
+  
+}
