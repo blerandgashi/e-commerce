@@ -244,3 +244,9 @@ main{
     text-decoration: none;
     border-radius: 5px;
 }
+.purchase-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
