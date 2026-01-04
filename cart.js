@@ -70,6 +70,30 @@ function removeFromChart(productId){
   localStorage.setItem("cart", JSON.stringify(cart));
 }
 
-function loadCart(){
-  
+
+function calculateTotals(){
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  const subTotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+  const tax = subTotal * 0.10;
+
+  const total = subTotal + tax;
+
+  document.querySelector("#subtotal").textContent = '$' + subTotal.toFixed(2);
+  document.querySelector("#tax").textContent = '$' + tax.toFixed(2);
+  document.querySelector("#total").textContent = '$' + total.toFixed(2);
 }
+calculateTotals()
+
+document.querySelector(".checkout-btn").addEventListener("click", function(){
+  const container = document.querySelector(".cart-container");
+
+  container.innerHTML = `
+    <div class="purchase-container">
+      <h2>✅ Order Placed Successfully</h2>
+      <p>Thank you for your order!</p>
+      <a href="index.html" class="btn">Continue shopping...</a>
+    </div>
+  `
+})
