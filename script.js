@@ -22,6 +22,7 @@ function showProductContainer(productsArr){
   productContainer.innerHTML = html;
 }
 showProductContainer(products);
+
 productContainer.addEventListener("click", function(e){
   if (e.target.classList.contains("add-to-cart-btn")) {
     const productId = parseInt(e.target.dataset.id);
@@ -58,3 +59,39 @@ function getCartCount(){
   cartCount.textContent = totalItems;
 }
 getCartCount()
+
+const allBtns = document.querySelectorAll(".filter-btn");
+let currentCategory = "all";
+
+allBtns.forEach(btn => {
+  
+  btn.addEventListener("click", function(){
+    btn.classList.remove("active");
+    btn.classList.add("active");
+
+    currentCategory = btn.dataset.category;  
+    if (currentCategory !== "all") {
+      filterProducts(currentCategory);
+    }else{
+      showProductContainer(products);
+    }
+  })
+})
+
+function filterProducts(btnCategory){
+  const arr = products.filter(product => product.category === btnCategory);
+  let html = "";
+  arr.forEach(productCategory => {
+    html += `
+      <div class="product-card">
+        <img src="${productCategory.image}" class="product-image">
+        <h3 class="product-name">${productCategory.name}</h3>
+        <p class="product-price">${productCategory.price}</p>
+        <p class="product-description">${productCategory.description}</p>
+        <p>Category: ${productCategory.category}</p>
+        <button class="add-to-cart-btn" data-id="${productCategory.id}">Add to Cart</button>
+      </div>
+    `
+  })
+  productContainer.innerHTML = html;
+}
