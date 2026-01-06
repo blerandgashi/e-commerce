@@ -95,3 +95,15 @@ function filterProducts(btnCategory){
   })
   productContainer.innerHTML = html;
 }
+
+searchInput.addEventListener("input", function(e){
+  const value = e.target.value;
+
+  const filteredProducts = products.filter(product => {
+    const toLowerCase = product.name.toLowerCase();
+    return toLowerCase.includes(value);
+  });
+  console.log(filteredProducts);
+
+  showProductContainer(filteredProducts);
+})
