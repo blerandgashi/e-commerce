@@ -2,6 +2,8 @@ const cartCount = document.querySelector("#cart-count");
 const searchInput = document.querySelector("#search-input");
 const filterBtns = document.querySelector(".filter-btn");
 const productContainer = document.querySelector("#products-container");
+const productCount = document.querySelector("#product-count");
+const noProduct = document.querySelector(".no-product");
 
 function showProductContainer(productsArr){
   let html = "";
@@ -18,6 +20,15 @@ function showProductContainer(productsArr){
       </div>
     `
   });
+  if (productsArr.length > 1) {
+    productCount.textContent = productsArr.length + " products";
+  }else if (productsArr.length === 0) {
+    productCount.textContent = productsArr.length + " products"
+    noProduct.textContent = "No products found. Try a different search!"
+  }else{
+    productCount.textContent = productsArr.length + " product";
+    noProduct.textContent = ""
+  }
 
   productContainer.innerHTML = html;
 }
