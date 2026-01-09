@@ -22,6 +22,7 @@ function showProductContainer(productsArr){
   });
   if (productsArr.length > 1) {
     productCount.textContent = productsArr.length + " products";
+    noProduct.textContent = ""
   }else if (productsArr.length === 0) {
     productCount.textContent = productsArr.length + " products"
     noProduct.textContent = "No products found. Try a different search!"
@@ -81,9 +82,15 @@ allBtns.forEach(btn => {
     btn.classList.add("active");
 
     currentCategory = btn.dataset.category;  
-    if (currentCategory !== "all") {
+    if (currentCategory === "price") {
+      const sortedByPrice = products.sort((a,b) => {
+        return b.price - a.price;
+      })
+      showProductContainer(sortedByPrice)
+    }else if (currentCategory !== "all") {
       filterProducts(currentCategory);
-    }else{
+    }
+    else{
       showProductContainer(products);
     }
   })
