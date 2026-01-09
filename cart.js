@@ -97,3 +97,7 @@ document.querySelector(".checkout-btn").addEventListener("click", function(){
     </div>
   `
 })
+
+document.querySelector(".clear-all").addEventListener("click", function(){
+  localStorage.clear();
+})
